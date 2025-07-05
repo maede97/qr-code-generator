@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backend_url: 'https://backend.qr.cevi.tools'
+  backend_url: 'https://besj-qr-backend.hueppis.com'
 };

@@ -1,10 +1,10 @@
 services:
 
   backend:
-    image: registry.cevi.tools/cevi/qr-backend:latest
+    image: ghcr.io/maede97/qr-code-generator:latest:latest
 
   frontend:
-    image: registry.cevi.tools/cevi/qr-frontend:latest
+    image: ghcr.io/maede97/qr-code-generator:latest
     build:
       args:
         - configuration=production

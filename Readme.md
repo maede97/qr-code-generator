@@ -1,9 +1,9 @@
-# QR Code Generator mit Cevi Logo
+# QR Code Generator mit BESJ Logo
 
-Dies ist eine einfache API mit Webinterface, das es erlaubt, QR-Codes mit dem Cevi-Logo zu erstellen.
-QR Codes können als PNG oder SVG erstellt werden und sind in den Farben des Cevi-Logo eingefärbt.
+Dies ist eine einfache API mit Webinterface, das es erlaubt, QR-Codes mit dem BESJ-Logo zu erstellen.
+QR Codes können als PNG oder SVG erstellt werden und sind in den Farben des BESJ-Logo eingefärbt.
 
-## Beispiel eines Cevi-QR-Codes
+## Beispiel eines BESJ-QR-Codes
 
 Die API erstellt QR-Code, die wie folgt aussehen:
 
@@ -21,7 +21,7 @@ Now you can interact with the webinterface on [localhost:80](http://localhost:80
 with the following command:
 
 ```bash
-curl --header "Content-Type: application/json"   --request POST   --data '{"link":"https://cevi.ch"}'   http://localhost:5000/svg > qr_code.svg
+curl --header "Content-Type: application/json"   --request POST   --data '{"link":"https://besj.ch"}'   http://localhost:5000/svg > qr_code.svg
 ```
 
 ### Available Endpoints
@@ -41,7 +41,7 @@ Both endpoints queried using a POST request. With a JSON body containing the qr 
 
   // optional parameters for the QR code
   "options": {
-    "color-scheme": "cevi"  // default is "cevi", other options are "black" and "white"
+    "color-scheme": "besj"  // default is "besj", other options are "black" and "white"
   }
 
 }
