@@ -15,10 +15,10 @@ def create_qr_code(link, options=None, save_to_svg_file=False) -> str:
     qr = QrCode.encode_text(link, QrCode.Ecc.HIGH)
 
     # Check if color_scheme is valid (cevi, black or white) or not set
-    if options is not None and 'color_scheme' in options and options['color_scheme'] not in ['cevi', 'black', 'white']:
+    if options is not None and 'color_scheme' in options and options['color_scheme'] not in ['besj', 'black', 'white']:
         raise ValueError("Invalid color scheme")
 
-    color_scheme = 'cevi' if options is None or 'color_scheme' not in options else options['color_scheme']
+    color_scheme = 'besj' if options is None or 'color_scheme' not in options else options['color_scheme']
 
     # Save QR code as SVG
     svg_text = to_svg_str(qr, border=2, color_scheme=color_scheme)
@@ -30,7 +30,7 @@ def create_qr_code(link, options=None, save_to_svg_file=False) -> str:
     return svg_text
 
 
-def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="cevi") -> str:
+def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="besj") -> str:
     """
 
     Returns a string of SVG code for an image depicting the given QR Code, with the given number
@@ -92,10 +92,10 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="ce
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 {qr.get_size() + border * 2} {qr.get_size() + border * 2}" stroke="none">
         
         <path d="{" ".join(qr_parts)}" fill="{
-            '#003d8f' if color_scheme == 'cevi' else ('#ffffff' if color_scheme == 'white' else '#000000')
+            '#003d8f' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
         }"/>
         <path d="{" ".join(qr_corners)}" fill="{
-            '#e20031' if color_scheme == 'cevi' else ('#ffffff' if color_scheme == 'white' else '#000000')
+            '#e20031' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
         }"/>
 
         { cevi_logo_string }
@@ -106,4 +106,4 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="ce
 
 # Run the main program
 if __name__ == "__main__":
-    svg_text = create_qr_code("https://cevi.ch")
+    svg_text = create_qr_code("https://besj.ch")
