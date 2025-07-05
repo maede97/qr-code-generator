@@ -45,12 +45,15 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="be
         raise ValueError("Logo size must be non-negative")
 
     # Load logo as SVG
-    cevi_logo = svgutils.compose.SVG('cevi_logo.svg')
+    if color_scheme == "besj":
+        besj_logo = svgutils.compose.SVG('besj_logo.svg')
+    else:
+        besj_logo = svgutils.compose.SVG('besj_logo_bw.svg')
 
     # Original svg logo is of size 500x500 pixels
-    cevi_logo.scale(0.002 * logo_size, 0.002 * logo_size)
-    cevi_logo.moveto(border + qr.get_size() / 2.0 - logo_size / 2.0, border + qr.get_size() / 2.0 - logo_size / 2.0)
-    cevi_logo.tostr()
+    besj_logo.scale(0.0067 * logo_size, 0.0067 * logo_size)
+    besj_logo.moveto(border + qr.get_size() / 2.0 - logo_size / 2.0, border + qr.get_size() / 2.0 - logo_size / 2.0)
+    besj_logo.tostr()
 
     # Compute the width and height of the SVG image
     qr_parts: List[str] = []
@@ -75,30 +78,30 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="be
                 else:
                     qr_parts.append(f"M{x + border},{y + border}h1v1h-1z")
 
-    cevi_logo_string = str(cevi_logo.tostr())
+    besj_logo_string = str(besj_logo.tostr())
 
-    if color_scheme == 'black':
-        cevi_logo_string = cevi_logo_string \
-            .replace('fill:#e20031', 'fill:#000000') \
-            .replace('fill:#003d8f', 'fill:#000000')
+    # if color_scheme == 'black':
+    #     besj_logo_string = besj_logo_string \
+    #         .replace('fill:#e20031', 'fill:#000000') \
+    #         .replace('fill:#003d8f', 'fill:#000000')
 
-    if color_scheme == 'white':
-        cevi_logo_string = cevi_logo_string \
-            .replace('fill:#e20031', 'fill:#ffffff') \
-            .replace('fill:#003d8f', 'fill:#ffffff')
+    # if color_scheme == 'white':
+    #     besj_logo_string = besj_logo_string \
+    #         .replace('fill:#e20031', 'fill:#ffffff') \
+    #         .replace('fill:#003d8f', 'fill:#ffffff')
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 {qr.get_size() + border * 2} {qr.get_size() + border * 2}" stroke="none">
         
         <path d="{" ".join(qr_parts)}" fill="{
-            '#003d8f' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
+            '#21366b' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
         }"/>
         <path d="{" ".join(qr_corners)}" fill="{
-            '#e20031' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
+            '#f7db38' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
         }"/>
 
-        { cevi_logo_string }
+        { besj_logo_string }
 
     </svg>
     """

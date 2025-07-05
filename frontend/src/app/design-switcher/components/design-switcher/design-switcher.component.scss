@@ -27,7 +27,7 @@
     width: 25px;
     background-color: white;
     border-radius: 50%;
-    border: 3px solid #13358e;
+    border: 3px solid #21366b;
   }
 
   .container:hover input ~ .checkmark {
@@ -35,7 +35,7 @@
   }
 
   .container input:checked ~ .checkmark {
-    background-color: #13358e;
+    background-color: #21366b;
   }
 
   .checkmark:after {
