@@ -26,8 +26,11 @@ jobs:
       - name: Build docker image
         run: docker compose -f docker-compose.yml -f docker-compose.prod.yml build
 
-      - name: Push docker image
-        run: docker push
+      - name: Push frontend docker image
+        run: docker push ghcr.io/maede97/qr-code-generator-frontend:latest
+
+      - name: Push backend docker image
+        run: docker push ghcr.io/maede97/qr-code-generator-backend:latest
 
   notify-server:
     needs: build-and-push
