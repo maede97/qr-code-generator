@@ -45,8 +45,7 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="be
         raise ValueError("Logo size must be non-negative")
 
     # Load logo as SVG
-    if color_scheme == "besj":
-        besj_logo = svgutils.compose.SVG('besj_logo.svg')
+    besj_logo = svgutils.compose.SVG('besj_logo.svg')
     else:
         besj_logo = svgutils.compose.SVG('besj_logo_bw.svg')
 
