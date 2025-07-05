@@ -1,7 +1,7 @@
 services:
 
   backend:
-    image: ghcr.io/maede97/qr-code-generator:latest:latest
+    image: ghcr.io/maede97/qr-code-generator:latest
 
   frontend:
     image: ghcr.io/maede97/qr-code-generator:latest
