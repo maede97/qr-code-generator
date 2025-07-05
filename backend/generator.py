@@ -14,7 +14,7 @@ def create_qr_code(link, options=None, save_to_svg_file=False) -> str:
     # Make and print the QR Code symbol
     qr = QrCode.encode_text(link, QrCode.Ecc.HIGH)
 
-    # Check if color_scheme is valid (cevi, black or white) or not set
+    # Check if color_scheme is valid (besj, black or white) or not set
     if options is not None and 'color_scheme' in options and options['color_scheme'] not in ['besj', 'black', 'white']:
         raise ValueError("Invalid color scheme")
 

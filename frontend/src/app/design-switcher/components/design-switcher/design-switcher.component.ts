@@ -16,7 +16,7 @@ export class DesignSwitcherComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = new FormGroup<ColorForm>({
-      color: new FormControl('cevi', { nonNullable: true, validators: [Validators.required] }),
+      color: new FormControl('besj', { nonNullable: true, validators: [Validators.required] }),
     });
     this.form.valueChanges
       .pipe(

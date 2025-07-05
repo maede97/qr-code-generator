@@ -1,10 +1,10 @@
 services:
 
   backend:
-    image: ghcr.io/maede97/qr-code-generator:latest
+    image: ghcr.io/maede97/qr-code-generator-backend:latest
 
   frontend:
-    image: ghcr.io/maede97/qr-code-generator:latest
+    image: ghcr.io/maede97/qr-code-generator-frontend:latest
     build:
       args:
         - configuration=production

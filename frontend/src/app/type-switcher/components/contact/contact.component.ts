@@ -45,7 +45,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     const vcard = new VCard();
     vcard
       .addName(value.lastName, value.firstName)
-      .addCompany('Cevi')
+      .addCompany('BESJ')
       .addEmail(value.mail)
       .addPhoneNumber(value.phoneNumber, 'PREF')
       .addAddress('', '', value.street, value.city, '', value.city, 'Switzerland');
