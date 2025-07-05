@@ -5,9 +5,9 @@ import { ApplicationModel } from './application-model';
 import { QrCodeTypes } from '../../types/qr-code-types';
 
 const defaults: ApplicationModel = {
-  color: 'cevi',
+  color: 'besj',
   type: QrCodeTypes.Link,
-  content: 'https://cevi.ch',
+  content: 'https://besj.ch',
 };
 
 @State<ApplicationModel>({
