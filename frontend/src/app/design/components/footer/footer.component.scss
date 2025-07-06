@@ -5,6 +5,11 @@ footer {
     padding: 1rem;
     width: 100%;
     color: white;
+
+    // Hide on mobile screens
+    @media (max-width: 767px) {
+        display: none;
+    }
 }
 
 a {
@@ -13,12 +18,6 @@ a {
 }
 
 span {
-  font-family: "Montserrat Light",sans-serif;
+  font-family: "Montserrat Light", sans-serif;
   font-size: 10pt;
-}
-
-@media screen and (max-width: 750px) {
-  .footer {
-    display: none;
-  }
 }
