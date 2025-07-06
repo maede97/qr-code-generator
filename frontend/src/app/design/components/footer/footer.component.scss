@@ -1,23 +1,26 @@
 footer {
+  // Styles for desktop and tablets (≥ 767px)
+  @media (min-width: 767px) {
     position: fixed;
     bottom: 0;
     background-color: #21366b;
     padding: 1rem;
     width: 100%;
     color: white;
+  }
 
-    // Hide on mobile screens
-    @media (max-width: 767px) {
-        display: none;
-    }
-}
+  // Hide on smaller screens (< 767px)
+  @media (max-width: 766px) {
+    display: none;
+  }
 
-a {
+  a {
     color: white;
     text-decoration: none;
-}
+  }
 
-span {
-  font-family: "Montserrat Light", sans-serif;
-  font-size: 10pt;
+  span {
+    font-family: "Montserrat Light", sans-serif;
+    font-size: 10pt;
+  }
 }
