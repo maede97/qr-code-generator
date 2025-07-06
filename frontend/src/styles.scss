@@ -15,7 +15,12 @@ html, body {
   display: block;
   background-color: whitesmoke;
   padding: 2rem;
-  height: calc(100vh - 8rem);
+  @media (min-width: 767px) {
+    height: calc(100vh - 8rem);
+  }
+  @media (max-width: 766px) {
+    height: 100vh;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
