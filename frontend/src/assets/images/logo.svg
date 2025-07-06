@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Ebene_2" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.3 91.33">
+<svg id="Ebene_2" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433.3 91.33" width="433.3" height="91.33">
   <defs>
     <style>
       .cls-1 {
@@ -12,6 +12,7 @@
     </style>
   </defs>
   <g id="Ebene_1-2" data-name="Ebene 1">
+	<rect style="fill:white;" width="433.3" height="91.3"/>
     <g id="Ebene_1-2" data-name="Ebene 1-2">
       <g>
         <g>

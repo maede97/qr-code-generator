@@ -15,7 +15,7 @@ def create_qr_code(link, options=None, save_to_svg_file=False) -> str:
     qr = QrCode.encode_text(link, QrCode.Ecc.HIGH)
 
     # Check if color_scheme is valid (besj, black or white) or not set
-    if options is not None and 'color_scheme' in options and options['color_scheme'] not in ['besj', 'black', 'white']:
+    if options is not None and 'color_scheme' in options and options['color_scheme'] not in ['besj', 'black']:
         raise ValueError("Invalid color scheme")
 
     color_scheme = 'besj' if options is None or 'color_scheme' not in options else options['color_scheme']
@@ -45,14 +45,14 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="be
         raise ValueError("Logo size must be non-negative")
 
     # Load logo as SVG
-    besj_logo = svgutils.compose.SVG('besj_logo.svg')
-    else:
+    if color_scheme == "besj":
+        besj_logo = svgutils.compose.SVG('besj_logo.svg')
+        besj_logo.scale(0.0037 * logo_size, 0.0037 * logo_size)
+    if color_scheme == "black":
         besj_logo = svgutils.compose.SVG('besj_logo_bw.svg')
-
-    # Original svg logo is of size 500x500 pixels
-    besj_logo.scale(0.0067 * logo_size, 0.0067 * logo_size)
+        besj_logo.scale(0.015 * logo_size, 0.015 * logo_size)
+    
     besj_logo.moveto(border + qr.get_size() / 2.0 - logo_size / 2.0, border + qr.get_size() / 2.0 - logo_size / 2.0)
-    besj_logo.tostr()
 
     # Compute the width and height of the SVG image
     qr_parts: List[str] = []
@@ -79,25 +79,16 @@ def to_svg_str(qr: QrCode, border: int = 0, logo_size: int = 8, color_scheme="be
 
     besj_logo_string = str(besj_logo.tostr())
 
-    # if color_scheme == 'black':
-    #     besj_logo_string = besj_logo_string \
-    #         .replace('fill:#e20031', 'fill:#000000') \
-    #         .replace('fill:#003d8f', 'fill:#000000')
-
-    # if color_scheme == 'white':
-    #     besj_logo_string = besj_logo_string \
-    #         .replace('fill:#e20031', 'fill:#ffffff') \
-    #         .replace('fill:#003d8f', 'fill:#ffffff')
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 {qr.get_size() + border * 2} {qr.get_size() + border * 2}" stroke="none">
         
         <path d="{" ".join(qr_parts)}" fill="{
-            '#21366b' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
+            '#21366b' if color_scheme == 'besj' else '#000000'
         }"/>
         <path d="{" ".join(qr_corners)}" fill="{
-            '#f7db38' if color_scheme == 'besj' else ('#ffffff' if color_scheme == 'white' else '#000000')
+            '#f7db38' if color_scheme == 'besj' else '#000000'
         }"/>
 
         { besj_logo_string }
